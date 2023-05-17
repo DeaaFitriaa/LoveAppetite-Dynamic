@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2022 at 06:07 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: May 17, 2023 at 07:07 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `categories` (
   `ID` int(11) NOT NULL,
   `Name` varchar(64) NOT NULL,
   `Description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories`
@@ -53,7 +53,7 @@ INSERT INTO `categories` (`ID`, `Name`, `Description`) VALUES
 CREATE TABLE `payments` (
   `ID` int(11) NOT NULL,
   `Name` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `payments`
@@ -79,34 +79,35 @@ CREATE TABLE `products` (
   `ID` int(11) NOT NULL,
   `Name` varchar(64) DEFAULT NULL,
   `Description` text DEFAULT NULL,
+  `Image` text DEFAULT NULL,
   `CategoryID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`ID`, `Name`, `Description`, `CategoryID`) VALUES
-(1, 'Japanese Curry Burger', 'Japanese Curry Burger Best seller', 1),
-(2, 'M.C Burger', 'M.C Burger Krapow', 1),
-(3, 'Danish', 'Danish Hotdogs', 1),
-(4, 'Kraut Seattle', 'Kraut Seattle Hotdogs', 1),
-(5, 'Meatzza Carbonara', 'Meatzza Carbonara Cheesy Bites', 2),
-(6, 'Cheesy Galore', 'Cheesy Galore Stuffed Crust', 2),
-(7, 'Veggie Garden', 'Veggie Garden Sausage Crust', 2),
-(8, 'Hawaiian Chicken', 'Hawaiian Chicken Pizza Original', 2),
-(9, 'Classic Vanilla', 'Classic Vanilla Gelato', 3),
-(10, 'Limoncello', 'Limoncello Gelato', 3),
-(11, 'Strawberry Cheese', 'Strawberry Cheese Gelato', 3),
-(12, 'Chocolate', 'Chocolate Gelato', 3),
-(13, 'Cappuccino', 'Cappuccino Cold/Hot', 4),
-(14, 'Latte', 'Latte Cold/Hot', 4),
-(15, 'Smoothie', 'Smoothie Manggo', 4),
-(16, 'Tea', 'Tea Cold/Hot', 4),
-(17, 'Choc Almond', 'Choc Almond Donuts', 5),
-(18, 'Black Forest', 'Black Forest Brownies', 5),
-(19, 'Oreo Buterscotch', 'Oreo Buterscotch Donuts', 5),
-(20, 'Cookies Monster', 'Cookies Monster Cupcake', 5);
+INSERT INTO `products` (`ID`, `Name`, `Description`, `Image`, `CategoryID`) VALUES
+(1, 'Japanese Curry Burger', 'Japanese Curry Burger Best seller', 'g-1.jpg', 1),
+(2, 'M.C Burger', 'M.C Burger Krapow', 'p-1.jpg', 1),
+(3, 'Danish', 'Danish Hotdogs', 'g-3.jpg', 1),
+(4, 'Kraut Seattle', 'Kraut Seattle Hotdogs', 'g-3.jpg', 1),
+(5, 'Meatzza Carbonara', 'Meatzza Carbonara Cheesy Bites', 's-img-2.jpg', 2),
+(6, 'Cheesy Galore', 'Cheesy Galore Stuffed Crust', 's-img-6.jpg', 2),
+(7, 'Veggie Garden', 'Veggie Garden Sausage Crust', 'g-9.jpg', 2),
+(8, 'Hawaiian Chicken', 'Hawaiian Chicken Pizza Original', 's-img-3.jpg', 2),
+(9, 'Classic Vanilla', 'Classic Vanilla Gelato', 's-img-3.jpg', 3),
+(10, 'Limoncello', 'Limoncello Gelato', 's-img-3.jpg', 3),
+(11, 'Strawberry Cheese', 'Strawberry Cheese Gelato', 's-img-3.jpg', 3),
+(12, 'Chocolate', 'Chocolate Gelato', 's-img-3.jpg', 3),
+(13, 'Cappuccino', 'Cappuccino Cold/Hot', 'p-5.jpg', 4),
+(14, 'Latte', 'Latte Cold/Hot', 'p-5.jpg', 4),
+(15, 'Smoothie', 'Smoothie Manggo', 's-img-4.jpg', 4),
+(16, 'Tea', 'Tea Cold/Hot', 'p-5.jpg', 4),
+(17, 'Choc Almond', 'Choc Almond Donuts', 'g-8.jpg', 5),
+(18, 'Black Forest', 'Black Forest Brownies', 's-img-5.jpg', 5),
+(19, 'Oreo Buterscotch', 'Oreo Buterscotch Donuts', 'p-3.jpg', 5),
+(20, 'Cookies Monster', 'Cookies Monster Cupcake', 'p-4.jpg', 5);
 
 -- --------------------------------------------------------
 
@@ -125,7 +126,7 @@ CREATE TABLE `transactions` (
   `PaymentID` int(11) NOT NULL,
   `Paid` tinyint(1) NOT NULL DEFAULT 0,
   `Timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `transactions`
@@ -149,7 +150,7 @@ CREATE TABLE `users` (
   `Name` varchar(64) NOT NULL,
   `PhoneNumber` bigint(20) NOT NULL,
   `Address` varchar(1028) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`

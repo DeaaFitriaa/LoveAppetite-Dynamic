@@ -38,6 +38,7 @@
                 pModel.setId(i, rsProds.getString("ID"));
                 pModel.setName(i, rsProds.getString("Name"));
                 pModel.setDescription(i, rsProds.getString("Description"));
+                pModel.setImageUrl(i, rsProds.getString("Image"));
             }
         }
     }
@@ -301,7 +302,7 @@
 
         <% for (int i = 1; i <= productCounter; i++) { %>
         <div class="box">
-            <img src="images/g-<%= i%>.jpg" alt="">
+            <img src="images/<%= pModel.getImageUrl(i-1) %>" alt="">
             <div class="content">
                 <h3><%= pModel.getName(i-1)%></h3>
                 <p><%= pModel.getName(i-1)%></p>

@@ -13,11 +13,13 @@ public class ProductModel {
     private String[] id;
     private String[] name;
     private String[] description;
+    private String[] imageUrl;
     
     public void instantiateProducts(int i) {
         id = new String[i];
         name = new String[i];
         description = new String[i];
+        imageUrl = new String[i];
     }
     
     public void setId(int i, String id) {
@@ -42,5 +44,13 @@ public class ProductModel {
     
     public String getDescription(int i) {
         return description[i];
+    }
+    
+    public void setImageUrl(int i, String url) {
+        this.imageUrl[i] = url;
+    }
+    
+    public String getImageUrl(int i) {
+        return imageUrl[i];
     }
 }
