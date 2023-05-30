@@ -19,6 +19,4 @@ public class ProductController extends MainController {
         String sql = this.query.get;
         
         return super.get(sql);
-    }
-    
-}
+    }}
